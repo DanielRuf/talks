@@ -1,0 +1,251 @@
+<html>
+	<head>
+		<link rel="stylesheet" href="node_modules/reveal.js/css/reveal.css">
+		<link rel="stylesheet" href="node_modules/reveal.js/css/theme/white.css">
+		<link rel="stylesheet" href="node_modules/reveal.js/lib/css/zenburn.css">
+		<link rel="stylesheet" href="styles/theme.css">
+		<style>
+		.reveal img, .reveal video, .reveal iframe {
+			max-height: 80vh;
+		}
+		</style>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					Entwicklungsumgebung mit Boxen (Mac)
+				</section>
+				<section>
+					Puppet, SaltStack, Chef, Ansible, Fabric, &hellip;
+				</section>
+				<section>
+					Boxen (Puppet, Homebrew, Ruby)
+				</section>
+				<section>
+					phpenv, nodenv, rbenv
+				</section>
+				<section>
+					<a href="https://github.com/boxen/boxen">boxen/boxen</a><br>
+					<a href="https://github.com/boxen/our-boxen">boxen/our-boxen</a>
+				</section>
+				<section>
+					<a href="https://github.com/MikeMcQuaid/strap">MikeMcQuaid/strap</a>
+				</section>
+				<section>
+					<pre><code class="shell" data-trim>
+						sudo mkdir -p /opt/boxen
+						sudo chown ${USER}:staff /opt/boxen
+						git clone https://github.com/boxen/our-boxen /opt/boxen/repo
+						cd /opt/boxen/repo
+						git remote rm origin
+						git remote add origin &lt;the location of my new git repository&gt;
+						git push -u origin master
+					</code></pre>
+				</section>
+				<section>
+					<pre><code class="shell" data-trim>
+						cd /opt/boxen/repo
+						./script/boxen
+					</code></pre>
+				</section>
+				<section>
+					<pre><code class="yaml" data-trim>
+					  # /hiera/users/danielruf.yaml
+					  ---
+					  boxen::personal::homebrew_packages:
+					    - htop
+					    - the_silver_searcher
+
+					  ub_apache::vhost:
+					    typo3-dev.localhost:
+					      docroot: web
+					      php: 7.1
+					      env:
+					        - TYPO3_CONTEXT "Development"
+					</code></pre>
+				</section>
+				<section>
+					<pre><code class="puppet" data-trim>
+						# /modules/people/manifests/danielruf.pp
+						class people::danielruf {
+						  include people::ueberbit::default
+
+						  # Homebrew
+						  include wget
+
+						  # 5.5 Module
+						  php2::extension { "php55-opcache": extension => "opcache", php => "5.5" }
+						  php2::extension { "php55-imagick": extension => "imagick", php => "5.5" }
+						  php2::extension { "php55-gmp":     extension => "gmp",     php => "5.5" }
+						  php2::extension { "php55-mcrypt":  extension => "mcrypt",  php => "5.5" }
+						  php2::extension { "php55-xhprof":  extension => "xhprof",  php => "5.5" }
+
+						  # 5.6 Module
+						  php2::extension { "php56-opcache": extension => "opcache", php => "5.6" }
+						  php2::extension { "php56-imagick": extension => "imagick", php => "5.6" }
+						  php2::extension { "php56-gmp":     extension => "gmp",     php => "5.6" }
+						  php2::extension { "php56-mcrypt":  extension => "mcrypt",  php => "5.6" }
+						  php2::extension { "php56-xhprof":  extension => "xhprof",  php => "5.6" }
+
+						  # 7.0 Module
+						  php2::extension { "php70-opcache": extension => "opcache", php => "7.0" }
+						  php2::extension { "php70-imagick": extension => "imagick", php => "7.0" }
+						  php2::extension { "php70-gmp":     extension => "gmp",     php => "7.0" }
+						  php2::extension { "php70-gnupg":   extension => "gnupg",   php => "7.0" }
+
+						  # 7.1 + Module
+						  php2::extension { "php71-opcache": extension => "opcache", php => "7.1" }
+						  php2::extension { "php71-imagick": extension => "imagick", php => "7.1" }
+						  php2::extension { "php71-gmp":     extension => "gmp",     php => "7.1" }
+						}
+					</code></pre>
+				</section>
+				<section>
+					<pre><code class="puppet" data-trim>
+					  # 7.2
+					  php2::fpm { '7.2': }
+					  php2::symlinks { '7.2': }
+					  php2::extension { "php72-apcu":    extension => "apcu",    php => "7.2", ensure => "absent" }
+					  php2::extension { "php72-xdebug":  extension => "xdebug",  php => "7.2" }
+					</code></pre>
+				</section>
+				<section>
+					<pre><code class="apache" data-trim>
+                        # ~/.boxen/config/apache/10-typo3-dev.localhost.conf
+                        &lt;VirtualHost *:80&gt;
+                          ServerAlias typo3-dev.localhost
+                          ServerAlias typo3-dev.localhost.*.xip.io
+                          ServerAdmin admin@example.com
+
+                          &lt;Directory /Users/druf/Sites&gt;
+                            AllowOverride All
+                            Options FollowSymLinks
+                            Require all granted
+                          &lt;/Directory&gt;
+
+                          DocumentRoot /Users/druf/Sites/typo3-dev.localhost/web
+                          Include /opt/boxen/homebrew/etc/httpd/php/7.1.conf
+                        &lt;/VirtualHost&gt;
+					</code></pre>
+				</section>
+				<section>
+					<pre><code class="shell" data-trim>
+                      nodenv 1.0.0
+                      Usage: nodenv &lt;command&gt; [&lt;args&gt;]
+
+                      Some useful nodenv commands are:
+                         commands    List all available nodenv commands
+                         local       Set or show the local application-specific Node version
+                         global      Set or show the global Node version
+                         shell       Set or show the shell-specific Node version
+                         install     Install a Node version using node-build
+                         uninstall   Uninstall a specific Node version
+                         rehash      Rehash nodenv shims (run this after installing executables)
+                         version     Show the current Node version and its origin
+                         versions    List all Node versions available to nodenv
+                         which       Display the full path to an executable
+                         whence      List all Node versions that contain the given executable
+
+                      See `nodenv help &lt;command&gt;' for information on a specific command.
+                      For full documentation, see: https://github.com/oinutter/nodenv#readme
+					</code></pre>
+				</section>
+				<section>
+					<pre><code class="shell" data-trim>
+                      phpenv:
+                      =======
+                         PHP multi-version installation and management utility.
+
+                      Usage: phpenv &lt;command&gt; [&lt;args&gt;]
+
+                      Some useful phpenv commands are:
+                         commands    List all available phpenv commands
+                         configure   Edit the current PHP's php.ini configuration file at location
+                         local       Set or show the local application-specific PHP version
+                         global      Set or show the global PHP version and update the Apache apxs
+                         shell       Set or show the shell-specific PHP version
+                         install     Configure, build and install a PHP release version
+                         rehash      Rehash phpenv shims (run this after installing executables)
+                         version     Show the current PHP version and its origin
+                         versions    List all PHP versions available to phpenv
+                         which       Display the full path to an executable
+                         whence      List all PHP versions that contain the given executable
+
+                      See `phpenv help &lt;command&gt;' for information on a specific command.
+                      For full documentation, see: https://github.com/phpenv/phpenv#readme
+					</code></pre>
+				</section>
+				<section>
+					<pre><code class="shell" data-trim>
+					# .node-version
+					8
+					</code></pre>
+				</section>
+				<section>
+					<pre><code class="shell" data-trim>
+					# .php-version
+					7.0
+					</code></pre>
+				</section>
+				<section>
+					<pre><code class="yaml" data-trim>
+                    # https://github.com/DanielRuf/homebrew-brewfile/blob/master/Brewfile
+                    tap 'caskroom/cask'
+                    tap 'homebrew/binary'
+                    tap 'homebrew/bundle'
+                    tap 'homebrew/core'
+                    tap 'homebrew/dupes'
+                    tap 'homebrew/services'
+                    tap 'homebrew/versions'
+                    tap 'nodenv/nodenv'
+                    tap 'home-brew/homebrew-php'
+
+                    brew 'zsh'
+                    brew 'zsh-completions'
+
+                    brew 'php71'
+                    brew 'caddy'
+                    brew 'nodenv'
+
+                    brew 'cask'
+                    cask 'google-chrome'
+                    cask 'jetbrains-toolbox'
+                    cask 'docker-toolbox'
+                    cask 'docker'
+
+                    cask 'macpass'
+                    cask 'keeweb'
+
+                    cask 'cyberduck'
+
+                    cask 'atom'
+                    cask 'sublime-text'
+					</code></pre>
+				</section>
+				<section>
+					<a href="https://mailcatcher.me/">mailcatcher</a>
+				</section>
+				<section>
+					<img src="images/logo.svg" class="logo"><br>
+					Vielen Dank =)
+				</section>
+			</div>
+		</div>
+		<script src="node_modules/reveal.js/js/reveal.js"></script>
+		<script src="node_modules/reveal.js/lib/js/head.min.js"></script>
+		<script>
+			Reveal.initialize({
+				width: "100%",
+				height: "100%",
+				margin: 0,
+				minScale: 1,
+				maxScale: 1,
+				dependencies: [
+					// Syntax highlight for <code> elements
+					{ src: 'node_modules/reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+				]
+			});
+		</script>
+	</body>
+</html>
