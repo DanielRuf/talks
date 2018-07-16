@@ -1,0 +1,27 @@
+{
+  "name": "slides",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js --timeout 30 | npm run export",
+    "server": "node server.js",
+    "export": "decktape reveal http://localhost:2015 slides.pdf"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DanielRuf/slides.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DanielRuf/slides/issues"
+  },
+  "homepage": "https://github.com/DanielRuf/slides#readme",
+  "dependencies": {
+    "decktape": "^2.4.3",
+    "express": "^4.16.2",
+    "reveal.js": "^3.5.0"
+  }
+}

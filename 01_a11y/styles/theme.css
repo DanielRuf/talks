@@ -1,0 +1,108 @@
+body {
+  background: #fbfe7b;
+  background-color: #fbfe7b;
+}
+
+/*********************************************
+ * LINKS
+ *********************************************/
+.reveal a {
+  color: #000;
+  text-decoration: underline;
+}
+
+.reveal a:hover {
+  color: #000;
+}
+
+.reveal .roll span:after {
+  color: #fff;
+  background: #000;
+}
+
+/*********************************************
+ * IMAGES
+ *********************************************/
+.reveal section img {
+  border-color: #000;
+}
+
+.reveal a:hover img {
+  border-color: #000;
+}
+
+/*********************************************
+ * NAVIGATION CONTROLS
+ *********************************************/
+.reveal .controls .navigate-left,
+.reveal .controls .navigate-left.enabled {
+  border-right-color: #000;
+}
+
+.reveal .controls .navigate-right,
+.reveal .controls .navigate-right.enabled {
+  border-left-color: #000;
+}
+
+.reveal .controls .navigate-up,
+.reveal .controls .navigate-up.enabled {
+  border-bottom-color: #000; }
+
+.reveal .controls .navigate-down,
+.reveal .controls .navigate-down.enabled {
+  border-top-color: #000;
+}
+
+.reveal .controls .navigate-left.enabled:hover {
+  border-right-color: #000;
+}
+
+.reveal .controls .navigate-right.enabled:hover {
+  border-left-color: #000;
+}
+
+.reveal .controls .navigate-up.enabled:hover {
+  border-bottom-color: #000;
+}
+
+.reveal .controls .navigate-down.enabled:hover {
+  border-top-color: #000;
+}
+
+/*********************************************
+ * PROGRESS BAR
+ *********************************************/
+
+.reveal .progress span {
+  background: #000;
+}
+
+.reveal section img.logo {
+  border: 0;
+  width: 50vw;
+  background: none;
+  box-shadow: none;
+  margin-bottom: 10vh;
+}
+
+::selection {
+  color: #fbfe7b;
+  background: #000;
+}
+
+@font-face{
+  font-family:'CentennialLTPro';
+  src: url(../webfonts/265B41_0_0.woff) format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face{
+  font-family:'CentennialLTPro';
+  src: url(../webfonts/265B41_1_0.woff) format("woff");
+  font-weight: 700;
+  font-style: normal;
+}
+
+html, body, .reveal {
+  font-family:'CentennialLTPro',Times New Roman,Times,Georgia,DejaVu Serif,serif;
+}
