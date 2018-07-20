@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node server.js --timeout 30 | npm run export",
+    "start": "node server.js --timeout 30 | yarn run export",
     "server": "node server.js",
     "export": "decktape reveal http://localhost:2015 slides.pdf"
   },
@@ -20,8 +20,8 @@
   },
   "homepage": "https://github.com/DanielRuf/slides#readme",
   "dependencies": {
-    "decktape": "^2.4.3",
+    "decktape": "^2.8.4",
     "express": "^4.16.2",
-    "reveal.js": "^3.5.0"
+    "reveal.js": "^3.6.0"
   }
 }
