@@ -1,4 +1,5 @@
 node_modules
 .DS_Store
 .idea
-webfonts/*.woff
+webfonts/265B41_0_0.woff
+webfonts/265B41_1_0.woff
