@@ -161,14 +161,14 @@ debug@^3.1.0:
   dependencies:
     ms "2.0.0"
 
-decktape@^2.8.4:
-  version "2.8.4"
-  resolved "https://registry.yarnpkg.com/decktape/-/decktape-2.8.4.tgz#9f6e73416fabcfa960a1ef56be49646b87bd3b5e"
+decktape@^2.8.5:
+  version "2.8.5"
+  resolved "https://registry.yarnpkg.com/decktape/-/decktape-2.8.5.tgz#53592feae94e7b443ca5ab229ba0be4207b77dde"
   dependencies:
     chalk "^2.1.0"
     fonteditor-core "^1.0.2"
     hummus "^1.0.87"
-    puppeteer "^1.4.0"
+    puppeteer "^1.6.0"
     urijs "^1.18.12"
 
 deep-extend@^0.6.0:
@@ -614,7 +614,7 @@ proxy-from-env@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/proxy-from-env/-/proxy-from-env-1.0.0.tgz#33c50398f70ea7eb96d21f7b817630a55791c7ee"
 
-puppeteer@^1.4.0:
+puppeteer@^1.6.0:
   version "1.6.0"
   resolved "https://registry.yarnpkg.com/puppeteer/-/puppeteer-1.6.0.tgz#b6b6bd6a063a0b7591258613ec89a135f2cf8f2e"
   dependencies:
