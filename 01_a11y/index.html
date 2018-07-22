@@ -84,12 +84,149 @@
         <img src="images/lighthouse/lighthouse_4.png">
       </section>
       <section>
+        <pre><code class="shell" data-trim>
+          $ lighthouse https://google.com --view
+        </code></pre>
+      </section>
+      <section>
         <img src="images/lighthouse/lighthouse_5.png">
+      </section>
+      <section>
+        <pre><code class="shell" data-trim>
+          $ lighthouse --list-all-audits
+          {
+            "audits": [
+              "accessibility/accesskeys",
+              "accessibility/aria-allowed-attr",
+              "accessibility/aria-required-attr",
+              "accessibility/aria-required-children",
+              "accessibility/aria-required-parent",
+              "accessibility/aria-roles",
+              "accessibility/aria-valid-attr-value",
+              "accessibility/aria-valid-attr",
+              "accessibility/audio-caption",
+              "accessibility/button-name",
+              "accessibility/bypass",
+              "accessibility/color-contrast",
+              "accessibility/definition-list",
+              "accessibility/dlitem",
+              "accessibility/document-title",
+              "accessibility/duplicate-id",
+              "accessibility/frame-title",
+              "accessibility/html-has-lang",
+              "accessibility/html-lang-valid",
+              "accessibility/image-alt",
+              "accessibility/input-image-alt",
+              "accessibility/label",
+              "accessibility/layout-table",
+              "accessibility/link-name",
+              "accessibility/list",
+              "accessibility/listitem",
+              "accessibility/manual/custom-controls-labels",
+              "accessibility/manual/custom-controls-roles",
+              "accessibility/manual/focus-traps",
+              "accessibility/manual/focusable-controls",
+              "accessibility/manual/heading-levels",
+              "accessibility/manual/logical-tab-order",
+              "accessibility/manual/managed-focus",
+              "accessibility/manual/offscreen-content-hidden",
+              "accessibility/manual/use-landmarks",
+              "accessibility/manual/visual-order-follows-dom",
+              "accessibility/meta-refresh",
+              "accessibility/meta-viewport",
+              "accessibility/object-alt",
+              "accessibility/tabindex",
+              "accessibility/td-headers-attr",
+              "accessibility/th-has-data-cells",
+              "accessibility/valid-lang",
+              "accessibility/video-caption",
+              "accessibility/video-description",
+              "bootup-time",
+              "byte-efficiency/efficient-animated-content",
+              "byte-efficiency/offscreen-images",
+              "byte-efficiency/render-blocking-resources",
+              "byte-efficiency/total-byte-weight",
+              "byte-efficiency/unminified-css",
+              "byte-efficiency/unminified-javascript",
+              "byte-efficiency/unused-css-rules",
+              "byte-efficiency/unused-javascript",
+              "byte-efficiency/uses-long-cache-ttl",
+              "byte-efficiency/uses-optimized-images",
+              "byte-efficiency/uses-responsive-images",
+              "byte-efficiency/uses-text-compression",
+              "byte-efficiency/uses-webp-images",
+              "content-width",
+              "critical-request-chains",
+              "deprecations",
+              "dobetterweb/appcache-manifest",
+              "dobetterweb/doctype",
+              "dobetterweb/dom-size",
+              "dobetterweb/external-anchors-use-rel-noopener",
+              "dobetterweb/geolocation-on-start",
+              "dobetterweb/no-document-write",
+              "dobetterweb/no-vulnerable-libraries",
+              "dobetterweb/no-websql",
+              "dobetterweb/notification-on-start",
+              "dobetterweb/password-inputs-can-be-pasted-into",
+              "dobetterweb/uses-http2",
+              "dobetterweb/uses-passive-event-listeners",
+              "errors-in-console",
+              "font-display",
+              "image-aspect-ratio",
+              "is-on-https",
+              "load-fast-enough-for-pwa",
+              "mainthread-work-breakdown",
+              "manifest-short-name-length",
+              "manual/pwa-cross-browser",
+              "manual/pwa-each-page-has-url",
+              "manual/pwa-page-transitions",
+              "metrics",
+              "metrics/estimated-input-latency",
+              "metrics/first-contentful-paint",
+              "metrics/first-cpu-idle",
+              "metrics/first-meaningful-paint",
+              "metrics/interactive",
+              "metrics/speed-index",
+              "mixed-content",
+              "network-requests",
+              "predictive-perf",
+              "redirects-http",
+              "redirects",
+              "screenshot-thumbnails",
+              "seo/canonical",
+              "seo/font-size",
+              "seo/hreflang",
+              "seo/http-status-code",
+              "seo/is-crawlable",
+              "seo/link-text",
+              "seo/manual/mobile-friendly",
+              "seo/manual/structured-data",
+              "seo/meta-description",
+              "seo/plugins",
+              "seo/robots-txt",
+              "service-worker",
+              "splash-screen",
+              "themed-omnibox",
+              "time-to-first-byte",
+              "user-timings",
+              "uses-rel-preconnect",
+              "uses-rel-preload",
+              "viewport",
+              "webapp-install-banner",
+              "without-javascript",
+              "works-offline"
+            ]
+          }
+        </code></pre>
+      </section>
+      <section>
+        <pre><code class="shell" data-trim>
+          $ lighthouse https://google.com --only-categories accessibility --view
+        </code></pre>
       </section>
       <section>
         <img src="images/lighthouse/lighthouse_6.png">
       </section>
-      
       <section>
         <img src="images/sonarwhal/sonarwhal_1.png"><br>
         <small><a target="blank" rel="noopener" href="https://sonarwhal.com/">sonarwhal.com</a></small>
