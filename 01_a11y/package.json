@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/DanielRuf/slides#readme",
   "dependencies": {
-    "decktape": "^2.8.4",
+    "decktape": "^2.8.5",
     "express": "^4.16.2",
     "reveal.js": "^3.6.0"
   }
