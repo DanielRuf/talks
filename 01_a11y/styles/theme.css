@@ -7,12 +7,12 @@ body {
  * LINKS
  *********************************************/
 .reveal a {
-  color: #000;
+  color: inherit;
   text-decoration: underline;
 }
 
 .reveal a:hover {
-  color: #000;
+  color: inherit;
 }
 
 .reveal .roll span:after {
@@ -57,6 +57,11 @@ body {
 ::selection {
   color: #fbfe7b;
   background: #000;
+}
+
+section.has-dark-background ::selection {
+  color: #000;
+  background: #fff;
 }
 
 @font-face{
