@@ -1,0 +1,374 @@
+<html>
+	<head>
+		<link rel="stylesheet" href="node_modules/reveal.js/css/reveal.css">
+		<link rel="stylesheet" href="node_modules/reveal.js/css/theme/white.css">
+		<link rel="stylesheet" href="node_modules/reveal.js/lib/css/zenburn.css">
+		<link rel="stylesheet" href="styles/theme.css">
+		<style>
+		.reveal img, .reveal video, .reveal iframe {
+			max-height: 80vh;
+		}
+		</style>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h2>Web Performance Optimierung (WPO)<br>für OXID-Shops (Frontend)</h2>
+				</section>
+				<section>
+					<h3>Ausgangslage</h3>
+					<ul>
+						<li>Ubuntu 16 mit 4.4.0 Kernel</li>
+						<li>PHP 7.1(.19) als CGI/FPM</li>
+						<li>256M memory_limit</li>
+						<li>MySQL 5.7.21</li>
+						<li>HTTP2 (TLS + LetsEncrypt)</li>
+						<li>Apache 2.4</li>
+						<li>managed Hosting (All-Inkl Premium)</li>
+						<li>Oxid 6.1.0 (composer-project)</li>
+						<li>kein CDN</li>
+					</ul>
+				</section>
+				<section>
+					<h3>Ziel</h3>
+					<ul>
+						<li>unter 1s</li>
+						<li>unter 1MB</li>
+						<li>sehr gute Scores</li>
+					</ul>
+				</section>
+				<section>
+					<img src="images/devtools/uncached_all_original.png">
+				</section>
+				<section>
+					<img src="images/devtools/cached_original.png">
+				</section>
+				<section>
+					<img src="images/devtools/images.png">
+				</section>
+				<section>
+					<a href="reports/oxid-demo.daniel-ruf.de_2018-09-22_22-18-20.report.html" target="_blank">
+						<img src="images/lighthouse/desktop_original.png">
+					</a>
+				</section>
+				<section>
+					<a href="reports/oxid-demo.daniel-ruf.de_2018-09-22_21-28-58.html" target="_blank">
+						<img src="images/lighthouse/mobile_original.png">
+					</a>
+				</section>
+				<section>
+					<a href="http://www.webpagetest.org/result/180922_F3_1695badedcac80a8bd14c6c3daf802b4/1/details/" target="_blank">
+						<img src="images/webpagetest/original.png">
+					</a>
+				</section>
+				<section>
+					<h3>Bilder</h3>
+					<ul>
+						<li>responsive Bilder (picture-Tags + picturefill)</li>
+						<li>lazyloading</li>
+						<li>Kompression (+ webp)</li>
+						<li>progressive</li>
+					</ul>
+				</section>
+				<section>
+					<img src="images/caniuse/picture.png"><br>
+					<small><a href="https://caniuse.com/#feat=picture" target="_blank">https://caniuse.com/#feat=picture</a></small>
+				</section>
+				<section>
+					<img src="images/responsivebreakpoints.png"><br>
+					<small><a href="https://www.responsivebreakpoints.com/" target="_blank">https://www.responsivebreakpoints.com/</a></small>
+				</section>
+				<section>
+					<h3>Kompression</h3>
+					<ul>
+						<li>Photoshop</li>
+						<li><a href="https://imageoptim.com/" target="_blank">imageoptim</a></li>
+						<li><a href="https://pnggauntlet.com/" target="_blank">PNGGauntlet</a></li>
+						<li><a href="https://saerasoft.com/caesium/" target="_blank">Caesium</a></li>
+						<li><a href="https://github.com/imagemin/imagemin" target="_blank">imagemin</a></li>
+						<li><a href="https://github.com/lovell/sharp" target="_blank">sharp</a></li>
+						<li>&hellip;</li>
+					</ul>
+				</section>
+				<section>
+					<img src="images/caniuse/webp.png"><br>
+					<small><a href="https://caniuse.com/#feat=webp" target="_blank">https://caniuse.com/#feat=webp</a></small>
+				</section>
+				<section>
+					<a href="https://developers.google.com/speed/webp/download" target="_blank">https://developers.google.com/speed/webp/download</a><br>
+					<a href="https://developers.google.com/speed/webp/docs/precompiled" target="_blank">https://developers.google.com/speed/webp/docs/precompiled</a>
+				</section>
+				<section>
+					<pre><code class="shell" data-trim>
+					cwebp -q 80 -o output_file.webp input_file
+					</code></pre>
+				</section>
+				<section>
+					libjpeg<br>
+					<a href="https://libjpeg-turbo.org/Documentation/OfficialBinaries" target="_blank">https://libjpeg-turbo.org/Documentation/OfficialBinaries</a>
+				</section>
+				<section>
+					<pre><code class="shell" data-trim>
+					jpegtran -copy none -optimize -progressive -outfile $outfile $infile
+					</code></pre>
+				</section>
+				<section>
+					<pre><code class="html" data-trim>
+					<picture>
+						<source type="image/webp"
+							sizes="(max-width: 1170px) 100vw, 1170px"
+							srcset="
+							https://oxid.daniel-ruf.de/out/pictures/promo/surfer_wave_1__promo_dznauh/surfer_wave_1__promo_dznauh_c_scale,w_200.webp 200w,
+							https://oxid.daniel-ruf.de/out/pictures/promo/surfer_wave_1__promo_dznauh/surfer_wave_1__promo_dznauh_c_scale,w_536.webp 536w,
+							https://oxid.daniel-ruf.de/out/pictures/promo/surfer_wave_1__promo_dznauh/surfer_wave_1__promo_dznauh_c_scale,w_758.webp 758w,
+							https://oxid.daniel-ruf.de/out/pictures/promo/surfer_wave_1__promo_dznauh/surfer_wave_1__promo_dznauh_c_scale,w_943.webp 943w,
+							https://oxid.daniel-ruf.de/out/pictures/promo/surfer_wave_1__promo_dznauh/surfer_wave_1__promo_dznauh_c_scale,w_1170.webp 1170w"
+						>
+
+						<source
+							sizes="(max-width: 1170px) 100vw, 1170px"
+							srcset="
+							https://oxid.daniel-ruf.de/out/pictures/promo/surfer_wave_1__promo_dznauh/surfer_wave_1__promo_dznauh_c_scale,w_200_prog.jpg 200w,
+							https://oxid.daniel-ruf.de/out/pictures/promo/surfer_wave_1__promo_dznauh/surfer_wave_1__promo_dznauh_c_scale,w_536_prog.jpg 536w,
+							https://oxid.daniel-ruf.de/out/pictures/promo/surfer_wave_1__promo_dznauh/surfer_wave_1__promo_dznauh_c_scale,w_758_prog.jpg 758w,
+							https://oxid.daniel-ruf.de/out/pictures/promo/surfer_wave_1__promo_dznauh/surfer_wave_1__promo_dznauh_c_scale,w_943_prog.jpg 943w,
+							https://oxid.daniel-ruf.de/out/pictures/promo/surfer_wave_1__promo_dznauh/surfer_wave_1__promo_dznauh_c_scale,w_1170_prog.jpg 1170w"
+						>
+
+						<img src="https://oxid.daniel-ruf.de/out/pictures/promo/surfer_wave_1__promo_dznauh/surfer_wave_1__promo_dznauh_c_scale,w_1170_prog.jpg" alt="Banner 1" title="Banner 1">
+					</picture>
+					</code></pre>
+				</section>
+				<section>
+					<h3>Image Services</h3>
+					<ul>
+						<li><a href="https://web.wurfl.io/" target="_blank">WURFL (Wireless Universal Resource FiLe)</a></li>
+						<li><a href="https://cloudinary.com/" target="_blank">Cloudinary</a></li>
+						<li><a href="https://www.imgix.com/" target="_blank">imgix</a></li>
+						<li><a href="https://sirv.com/" target="_blank">Sirv</a></li>
+						<li><a href="https://piio.co/" trget="_blank">piio</a></li>
+						<li><a href="http://thumbor.org/" target="_blank">Thumbor</a></li>
+						<li><a href="http://flyimg.io/" target="_blank">flyimg</a></li>
+					</ul>
+				</section>
+				<section>
+					Brotli für weitere Dateien (css, js, svg)
+				</section>
+				<section>
+					<img src="images/caniuse/brotli.png"><br>
+					<small><a href="https://caniuse.com/#feat=brotli" target="_blank">https://caniuse.com/#feat=brotli</a></small>
+				</section>
+				<section>
+					<a href="https://github.com/google/brotli/issues/591#issuecomment-330470719" target="_blank"><img src="images/caniuse/brotli-builds.png"></a>
+				</section>
+				<section>
+					<a href="https://github.com/google/brotli" target="_blank">https://github.com/google/brotli</a><br>
+					<a href="https://bintray.com/eustas/brotli/bin/snapshot/view/files?sort=name&order=asc#files/" target="_blank">https://bintray.com/eustas/brotli/bin/snapshot/view/files?sort=name&order=asc#files/</a>
+				</section>
+				<section>
+					<pre><code class="shell" data-trim>
+					brotli -5 -o index.html.br index.html
+					</code></pre>
+				</section>
+				<section>
+					<pre><code class="apache" data-trim>
+					&lt;IfModule mod_headers.c&gt;
+
+						RewriteCond %{HTTP:Accept-Encoding} br
+						RewriteCond %{REQUEST_FILENAME}\.br -f
+						RewriteRule \.(css|ics|js|json|html|svg)$ %{REQUEST_URI}.br [L]
+
+						# Prevent mod_deflate double gzip
+						RewriteRule \.br$ - [E=no-gzip:1]
+
+						&lt;FilesMatch "\.br$"&gt;
+
+							&lt;IfModule mod_mime.c&gt;
+								# Serve correct content types
+								AddType text/css css.br
+								AddType text/calendar ics.br
+								AddType text/javascript js.br
+								AddType application/json json.br
+								AddType text/html html.br
+								AddType image/svg+xml svg.br
+
+								# Serve correct content charset
+								AddCharset utf-8 .css.br \
+								.ics.br \
+								.js.br \
+								.json.br
+							&lt;/IfModule&gt;
+
+							# Force proxies to cache brotlied and non-brotlied files separately
+							Header append Vary Accept-Encoding
+
+						&lt;/FilesMatch&gt;
+
+						# Serve correct encoding type
+						AddEncoding br .br
+
+					&lt;/IfModule&gt;
+					</code></pre>
+				</section>
+				<section>
+					<a href="https://github.com/powturbo/TurboBench" target="_blank">https://github.com/powturbo/TurboBench</a><br>
+					<a href="https://sites.google.com/site/powturbo/compression-benchmark" target="_blank">https://sites.google.com/site/powturbo/compression-benchmark</a>
+				</section>
+				<section>
+					<h3>Caching</h3>
+					<a href="https://github.com/h5bp/html5-boilerplate/blob/master/dist/.htaccess" target="_blank">HTML5 Boilerplate .htaccess</a>
+				</section>
+				<section>
+					<h3>Caching (Auszug)</h3>
+					<pre><code class="apache" data-trim>
+					&lt;IfModule mod_expires.c&gt;
+
+						ExpiresActive on
+						ExpiresDefault "access plus 1 month"
+
+						# CSS
+
+						ExpiresByType text/css "access plus 1 year"
+
+						# HTML
+
+						ExpiresByType text/html "access plus 0 seconds"
+
+						# JavaScript
+
+						ExpiresByType application/javascript "access plus 1 year"
+						ExpiresByType application/x-javascript "access plus 1 year"
+						ExpiresByType text/javascript "access plus 1 year"
+
+						# Media files
+
+						ExpiresByType image/jpeg "access plus 1 year"
+						ExpiresByType image/png "access plus 1 year"
+						ExpiresByType image/webp "access plus 1 year"
+
+						# Web fonts
+
+						# Web Open Font Format (WOFF) 1.0
+						ExpiresByType application/font-woff "access plus 1 year"
+						ExpiresByType application/x-font-woff "access plus 1 year"
+						ExpiresByType font/woff "access plus 1 year"
+
+						# Web Open Font Format (WOFF) 2.0
+						ExpiresByType application/font-woff2 "access plus 1 year"
+						ExpiresByType font/woff2 "access plus 1 year"
+
+					&lt;/IfModule&lgt;
+					</code></pre>
+				</section>
+				<section>
+					<h3>Schriften</h3>
+					self hosted!
+				</section>
+				<section>
+					<a href="https://google-webfonts-helper.herokuapp.com/fonts" target="_blank">https://google-webfonts-helper.herokuapp.com/fonts</a><br>
+					<a href="https://github.com/majodev/google-webfonts-helper" target="_blank">https://github.com/majodev/google-webfonts-helper</a>
+					<a href="https://www.npmjs.com/package/google-webfonts-downloader" target="blank">https://www.npmjs.com/package/google-webfonts-downloader</a>
+				</section>
+				<section>
+					<a href="https://google-webfonts-helper.herokuapp.com/fonts/roboto?subsets=latin" target="_blank"><img src="images/webfonthelper.png"></a>
+				</section>
+				<section>
+					<ul>
+						<li>modern browsers</li>
+						<li>local raus</li>
+						<li>nur benötigte Charsets</li>
+					</ul>
+				</section>
+				<section>
+					offline first (PWA)
+				</section>
+				<section>
+					<a href="https://www.pwabuilder.com/" target="_blank"><img src="images/pwabuilder.png"></a>
+				</section>
+				<section>
+					<img src="images/caniuse/serviceworkers.png"><br>
+					<small><a href="https://caniuse.com/#feat=serviceworkers" target="_blank">https://caniuse.com/#feat=serviceworkers</a></small>
+				</section>
+				<section>
+					<img src="images/caniuse/web-app-manifest.png"><br>
+					<small><a href="https://caniuse.com/#feat=web-app-manifest" target="_blank">https://caniuse.com/#feat=web-app-manifest</a></small>
+				</section>
+				<section>
+					<h3>Ergebnis</h3>
+					<ul>
+						<li>unter 1s</li>
+						<li>unter 1MB</li>
+						<li>sehr gute Scores</li>
+						<li>offline first</li>
+					</ul>
+				</section>
+				<section>
+					<a href="http://www.webpagetest.org/result/180922_VJ_98a60c8944886157fadd27166b71036f/1/details/" target="_blank">
+						<img src="images/webpagetest/optimized.png">
+					</a>
+				</section>
+				<section>
+					<a href="http://www.webpagetest.org/video/compare.php?tests=180922_F3_1695badedcac80a8bd14c6c3daf802b4,180922_VJ_98a60c8944886157fadd27166b71036f" target="_blank">
+						<img src="images/webpagetest/comparison.png">
+					</a>
+				</section>
+				<section>
+					<img src="images/devtools/uncached_all.png">
+				</section>
+				<section>
+					<img src="images/devtools/cached.png">
+				</section>
+				<section>
+					<a href="reports/oxid.daniel-ruf.de_2018-09-22_21-51-19.html" target="_blank">
+						<img src="images/lighthouse/desktop.png">
+					</a>
+				</section>
+				<section>
+					<a href="reports/oxid.daniel-ruf.de_2018-09-22_22-15-58.report.html" target="_blank">
+						<img src="images/lighthouse/mobile.png">
+					</a>
+				</section>
+				<section>
+					<h3>Verbesserungsvorschläge</h3>
+					<ul>
+						<li>alte Code raus (IE 8 / 9 / 10)</li>
+						<li>picture-Tags generieren / unterstützen</li>
+						<li>weniger Abhängigkeiten (Fontawesome, jQuery UI, jQuery)</li>
+						<li>user-scalable=no raus (a11y verbessern)</li>
+						<li>gute Defaults (Caching etc)</li>
+						<li>schlankere Slider (Swiper)</li>
+					</ul>
+				</section>
+				<section>
+					<h3>Links</h3>
+					<a href="https://github.com/DanielRuf/my-slides/" target="_blank">https://github.com/DanielRuf/my-slides/</a><br>
+					<a href="https://lighthouse-ci.appspot.com/try" target="_blank">https://lighthouse-ci.appspot.com/try</a><br>
+					<a href="https://images.guide/" target="_blank">https://images.guide/</a><br>
+					<a href="https://developers.google.com/web/fundamentals/performance/why-performance-matters/" target="_blank">https://developers.google.com/web/fundamentals/performance/why-performance-matters/</a><br>
+					<a href="https://www.smashingmagazine.com/2016/10/next-generation-server-compression-with-brotli/" target="_blank">https://www.smashingmagazine.com/2016/10/next-generation-server-compression-with-brotli/</a><br>
+					<a href="https://github.com/thedaviddias/Front-End-Performance-Checklist/blob/master/README.md" target="_blank">https://github.com/thedaviddias/Front-End-Performance-Checklist/blob/master/README.md</a>
+				</section>
+				<section>
+					<img src="images/logo.svg" class="logo"><br>
+					Vielen Dank für Ihre Aufmerksamkeit.
+				</section>
+			</div>
+		</div>
+		<script src="node_modules/reveal.js/js/reveal.js"></script>
+		<script src="node_modules/reveal.js/lib/js/head.min.js"></script>
+		<script>
+			Reveal.initialize({
+				width: "100%",
+				height: "100%",
+				margin: 0,
+				minScale: 1,
+				maxScale: 1,
+				dependencies: [
+					// Syntax highlight for <code> elements
+					{ src: 'node_modules/reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+				]
+			});
+		</script>
+	</body>
+</html>
