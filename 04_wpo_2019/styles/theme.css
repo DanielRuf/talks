@@ -1,0 +1,104 @@
+body {
+  background: #ffffff;
+  background-color: #ffffff;
+}
+
+/*********************************************
+ * LINKS
+ *********************************************/
+.reveal a {
+  color: inherit;
+  text-decoration: underline;
+}
+
+.reveal a:hover {
+  color: inherit;
+}
+
+.reveal .roll span:after {
+  color: #fff;
+  background: #000;
+}
+
+/*********************************************
+ * IMAGES
+ *********************************************/
+.reveal section img {
+  border-color: #000;
+}
+
+.reveal a:hover img {
+  border-color: #000;
+}
+
+/*********************************************
+ * NAVIGATION CONTROLS
+ *********************************************/
+ .reveal .controls {
+  color: #000000;
+}
+
+/*********************************************
+ * PROGRESS BAR
+ *********************************************/
+
+.reveal .progress span {
+  background: #000;
+}
+
+.reveal section img.logo {
+  border: 0;
+  width: 50vw;
+  background: none;
+  box-shadow: none;
+  margin-bottom: 10vh;
+}
+
+::selection {
+  color: #ffffff;
+  background: #000;
+}
+
+section.has-dark-background ::selection {
+  color: #000;
+  background: #fff;
+}
+
+@font-face{
+  font-family:'CentennialLTPro';
+  src: url(../webfonts/265B41_0_0.woff) format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face{
+  font-family:'CentennialLTPro';
+  src: url(../webfonts/265B41_1_0.woff) format("woff");
+  font-weight: 700;
+  font-style: normal;
+}
+
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal h5,
+.reveal h6,
+html, body, .reveal {
+  font-family:'CentennialLTPro',Times New Roman,Times,Georgia,DejaVu Serif,serif;
+}
+
+.reveal section .b0 {
+  border: 0;
+}
+
+.reveal section .m0 {
+  margin: 0;
+}
+
+.reveal section .vab {
+  vertical-align: baseline;
+}
+
+.reveal section .bsn {
+  box-shadow: none;
+}
