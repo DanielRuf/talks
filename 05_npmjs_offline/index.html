@@ -1,0 +1,300 @@
+<html>
+
+<head>
+	<link rel="stylesheet" href="node_modules/reveal.js/css/reveal.css">
+	<link rel="stylesheet" href="node_modules/reveal.js/css/theme/white.css">
+	<link rel="stylesheet" href="node_modules/reveal.js/lib/css/zenburn.css">
+	<link rel="stylesheet" href="styles/tailwind.css">
+	<link rel="stylesheet" href="styles/styles.css">
+	<style>
+		.reveal img,
+		.reveal video,
+		.reveal iframe {
+			max-height: 80vh;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<section>
+				oh no, npmjs is offline (again)<br>
+				<br><br>
+				<a href="https://status.npmjs.org/">status.npmjs.org</a><br>
+				<img src="images/npmjs_incident.png" class="mx-auto border-none box-shadow-none">
+			</section>
+
+			<section>
+				<img src="images/danielruf.jpg" class="w-64 h-64 rounded-full mx-auto border-none box-shadow-none">
+				<br>
+				<div>Daniel Ruf</div><br>
+				<div class="fragment">frontend developer @ UEBERBIT</div>
+				<div class="fragment">open source contributor</div>
+				<div class="fragment">co-organizing Frontend Rhein-Neckar</div>
+			</section>
+
+			<section>
+				<a href="https://daniel-ruf.de">daniel-ruf.de</a><br>
+				<a href="https://github.com/DanielRuf">github.com/DanielRuf</a><br>
+				<a href="https://twitter.com/DanielRufde">twitter.com/DanielRufde</a>
+			</section>
+
+			<section>
+				<a href="https://status.npmjs.org/incidents/1jdmllbx0q59"><img src="images/npmjs_503.png" class="mx-auto border-none box-shadow-none"></a>
+				<br>
+				<small class="text-left">
+					<a href="https://npm.community/t/enoaudit-from-registry-npmjs-org-503/4642">npm.community/t/enoaudit-from-registry-npmjs-org-503/4642</a><br>
+					<br>
+					npm ERR! code ENOAUDIT<br>
+					npm ERR! audit Your configured registry (https://registry.npmjs.org/) does not support audit requests.<br>
+					<br>
+					error An unexpected error occured: "https://....tgz": Request failed "503 Service unavailable"
+				</small>
+			</section>
+
+			<section>
+				<img src="images/undraw_server_status_5pbv.svg" class="mx-auto border-none box-shadow-none">
+			</section>
+
+			<section>
+				bad things can happen - are you prepared?<br>
+				<br>
+				<ul>
+					<li class="fragment">different maintainer(s) (<a href="https://gist.github.com/dominictarr/9fd9c1024c94592bc7268d36b8d83b3a">event-stream</a>)</li>
+					<li class="fragment">malware / malicious packages (<a href="https://blog.npmjs.org/post/180565383195/details-about-the-event-stream-incident">flatmap-stream</a>)</li>
+					<li class="fragment">deleted packages (<a href="https://blog.npmjs.org/post/141577284765/kik-left-pad-and-npm">left-pad, kik</a>)</li>
+					<li class="fragment"><a href="https://status.npmjs.org/history">outages</a> / no internet</li>
+				</ul>
+			</section>
+
+			<section>
+				<img src="images/undraw_server_down_s4lk.svg" class="mx-auto border-none box-shadow-none">
+			</section>
+
+			<section>
+				<a href="https://github.com/dominictarr/event-stream/issues/116">github.com/dominictarr/event-stream/issues/116</a><br>
+				<img src="images/event_stream_incident.png" class="mx-auto border-none box-shadow-none">
+			</section>
+
+			<section>
+				<div class="fragment">malware / malicious packages:</div>
+				<div class="fragment">YARA rules and malware scanners</div>
+				<br>
+				<div class="fragment">deleted packages:</div>
+				<div class="fragment">caches and mirrors</div>
+				<br>
+				<div class="fragment">outage / no internet:</div>
+				<div class="fragment">an alternative (local) registry</div>
+			</section>
+
+			<section>
+				<img src="images/undraw_security_o890.svg" class="mx-auto border-none box-shadow-none">
+			</section>
+
+			<section>
+				<img src="images/yara.png" class="mx-auto border-none box-shadow-none">
+			</section>
+
+			<section>
+				<a href="https://npme.npmjs.com/docs/workflow/mirroring.html">mirror for npm Enterprise</a><br>
+				<img src="images/mirror.png" class="mx-auto border-none box-shadow-none">
+			</section>
+
+			<section>
+				what if npm, Inc. would close its doors?<br>
+				<br>
+				<ul>
+					<li class="fragment"><a href="https://blog.npmjs.org/post/181872197694/npm-inc-has-a-new-ceo-bryan-bogensberger">new leadership / CEO</a> since August 2018</li>
+					<li class="fragment">many of original team left</li>
+					<li class="fragment">also the <a href="https://twitter.com/ceejbot/status/1111707835665047552">original CTO</a></li>
+				</ul>
+			</section>
+
+			<section>
+				<a href="https://twitter.com/fharper/status/1125774297241407489">twitter.com/fharper/status/1125774297241407489</a><br>
+				<img src="images/npmjs_layoffs.png" class="mx-auto border-none box-shadow-none">
+			</section>
+
+			<section>
+				<div class="fragment">fact:</div>
+				<div class="fragment">npmjs is the SPOF (Single Point of Failure)</div>
+				<br>
+				<div class="fragment">solution:</div>
+				<div class="fragment">independent registries</div>
+			</section>
+
+			<section>
+				<img src="images/undraw_connected_world_wuay.svg" class="mx-auto border-none box-shadow-none">
+			</section>
+
+			<section>
+				does GitHub work on something?<br>
+				<a href="https://pbs.twimg.com/media/D47eXNOXkAA1kFF.jpg:orig"><img src="images/D47eXNOXkAA1kFF_small.jpg" class="mx-auto border-none box-shadow-none"></a>
+			</section>
+
+			<section>
+				GitHub / Microsoft announces <a href="https://github.com/features/package-registry">GitHub Package Registry (GPR)</a><br>
+				<a href="https://twitter.com/github/status/1126949311848288256">twitter.com/github/status/1126949311848288256</a><br>
+				<img src="images/github_package_registry.png" class="mx-auto border-none box-shadow-none">
+			</section>
+
+			<section>
+				supported registries<br>
+				<br>
+				<ul>
+					<li>npm</li>
+					<li>Docker</li>
+					<li>Maven</li>
+					<li>NuGet</li>
+					<li>RubyGems</li>
+					<li>packagist?</li>
+				</ul>
+			</section>
+
+			<section>
+				<img src="images/undraw_may_the_force_bgdm.svg" class="mx-auto border-none box-shadow-none">
+			</section>
+
+			<section>
+				also in <a href="https://docs.gitlab.com/ee/user/project/packages/npm_registry.html">GitLab Premium and Silver</a><br>
+				<img src="images/gitlab_npm_registry.png" class="mx-auto border-none box-shadow-none">
+			</section>
+
+			<section>
+				we can use the features of the npmjs clients<br>
+				<br>
+				<ul>
+					<li class="fragment">caches</li>
+					<li class="fragment">--prefer-offline flag</li>
+					<li class="fragment">reuse packages (pnpm uses symlinks)</li>
+					<li class="fragment">better offline support (yarn, <a href="https://yarnpkg.github.io/berry/features/offline-cache">yarn v2 (berry)</a>, npm 5+, pnpm)</li>
+				</ul>
+			</section>
+
+			<section>
+				solutions<br>
+				<br>
+				<ul>
+					<li class="fragment"><a href="https://jfrog.com/artifactory/">Artifactory</a></li>
+					<li class="fragment"><a href="https://open-registry.dev/">open-registry</a></li>
+					<li class="fragment">IPFS / P2P / Scuttlebutt</li>
+					<li class="fragment">other (decentralized) solutions</li>
+					<li class="fragment"><a href="https://verdaccio.org/">Verdaccio (fka Sinopia)</a></li>
+				</ul>
+			</section>
+
+			<section>
+				<a href="https://addyosmani.com/blog/using-npm-offline/">addyosmani.com/blog/using-npm-offline</a><br>
+				<img src="images/offline_installation.png" class="mx-auto border-none box-shadow-none">
+			</section>
+
+			<section>
+				<a href="https://verdaccio.org/"><img src="images/verdaccio-banner@2x.png" class="mx-auto border-none box-shadow-none"></a>
+				<br>
+				A lightweight private npm proxy registry
+			</section>
+
+			<section>
+				<a href="https://github.com/verdaccio/verdaccio"><img src="images/verdaccio_repo.png" class="mx-auto border-none box-shadow-none"></a>
+			</section>
+
+			<section>
+				use cases<br>
+				<br>
+				<ul>
+					<li class="fragment">E2E Testing</li>
+					<li class="fragment">Caching strategies</li>
+					<li class="fragment">GitHub Actions</li>
+					<li class="fragment">Remote Registries (Uplinks)</li>
+				</ul>
+			</section>
+
+			<section>
+				plugins<br>
+				<br>
+				<ul>
+					<li class="fragment">Authentication</li>
+					<li class="fragment">Middleware</li>
+					<li class="fragment">Storage</li>
+					<li class="fragment">UI Theme</li>
+				</ul>
+			</section>
+
+			<section>
+				Authentication plugins<br>
+				<br>
+				<a href="https://github.com/idangozlan/verdaccio-bitbucket">verdaccio-bitbucket</a>, <a href="https://github.com/oeph/verdaccio-bitbucket-server">verdaccio-bitbucket-server</a>, <a href="https://www.npmjs.com/package/verdaccio-ldap">verdaccio-ldap</a>,<br>
+				<a href="https://github.com/nowhammies/verdaccio-activedirectory">verdaccio-active-directory</a>, <a href="https://github.com/bufferoverflow/verdaccio-gitlab">verdaccio-gitlab</a>, <a href="https://github.com/lab360-ch/verdaccio-gitlab-ci">verdaccio-gitlab-ci</a>,<br>
+				<a href="https://github.com/verdaccio/verdaccio-htpasswd">verdaccio-htpasswd</a>, <a href="https://github.com/aroundus-inc/verdaccio-github-oauth">verdaccio-github-oauth</a>, <a href="https://github.com/n4bb12/verdaccio-github-oauth-ui">verdaccio-github-oauth-ui</a>
+			</section>
+
+			<section>
+				Middleware plugins<br>
+				<br>
+				<a href="https://github.com/verdaccio/verdaccio-audit">verdaccio-audit</a>, <a href="https://github.com/ahoracek/verdaccio-profile-api">verdaccio-profile-api</a>
+			</section>
+
+			<section>
+				Storage plugins<br>
+				<br>
+				<a href="https://github.com/verdaccio/verdaccio-memory">verdaccio-memory</a>, <a href="https://github.com/remitly/verdaccio-s3-storage">verdaccio-s3-storage</a>, <a href="https://github.com/verdaccio/verdaccio-google-cloud">verdaccio-google-cloud</a>
+			</section>
+
+			<section>
+				<a href="https://verdaccio.org/docs/en/who-is-using">who uses Verdaccio?</a><br>
+				<br>
+				<div class="fragment">
+					<a href="https://pnpm.js.org/">pnpm</a>, <a href="https://github.com/facebook/create-react-app/blob/master/CONTRIBUTING.md#contributing-to-e2e-end-to-end-tests">create-react-app</a>, <a href="https://storybook.js.org/">Storybook</a>, <a href="https://neutrinojs.org/">Mozilla Neutrino</a>, <a href="https://github.com/gatsbyjs/gatsby">Gatsby</a>,<br><a href="https://github.com/transloadit/uppy">Uppy</a>, <a href="https://github.com/aurelia">Aurelia Framework</a>, <a href="https://github.com/teambit/bit">bit</a>, <a href="https://github.com/hyperledger/composer">Hyperledger Composer</a>, <a href="https://github.com/wix/yoshi">Wix Yoshi</a>
+				</div>
+			</section>
+
+			<section>
+				yarn global add verdaccio<br>
+				npm install --global verdaccio<br>
+				<br>
+				docker pull verdaccio/verdaccio<br>
+				helm install --name npm stable/verdaccio
+			</section>
+
+			<section>
+				npm / pnpm set registry https://registry.example.com<br>
+				yarn config set registry https://registry.example.com<br>
+				<br>
+				npm adduser --registry https://registry.example.com<br>
+				npm profile set password --registry https://registry.example.com
+			</section>
+
+			<section>
+				live demo
+			</section>
+
+			<section>
+				<a href="https://medium.com/verdaccio/the-crazy-story-of-verdaccio-d35d924728bc">The crazy story of Verdaccio</a> by Juan Picado
+			</section>
+
+			<section>
+				thanks for your attention!<br>
+				<br>
+				illustrations from <a href="https://undraw.co">undraw.co</a><br>
+			</section>
+		</div>
+	</div>
+	<script src="node_modules/reveal.js/js/reveal.js"></script>
+	<script src="node_modules/reveal.js/lib/js/head.min.js"></script>
+	<script>
+		Reveal.initialize({
+			width: "100%",
+			height: "100%",
+			margin: 0,
+			minScale: 1,
+			maxScale: 1,
+			dependencies: [
+				// Syntax highlight for <code> elements
+				{ src: 'node_modules/reveal.js/plugin/highlight/highlight.js', async: true, callback: function () { hljs.initHighlightingOnLoad(); } },
+			]
+		});
+	</script>
+</body>
+
+</html>

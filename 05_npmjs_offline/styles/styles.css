@@ -1,0 +1,12 @@
+.reveal section video.mx-auto,
+.reveal section img.mx-auto {
+    margin: 0px auto;
+}
+
+.border-none {
+    border: none !important;
+}
+
+.box-shadow-none {
+    box-shadow: none !important;
+}
