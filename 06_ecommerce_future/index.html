@@ -1,0 +1,220 @@
+<html>
+
+<head>
+	<link rel="stylesheet" href="node_modules/reveal.js/css/reveal.css">
+	<link rel="stylesheet" href="node_modules/reveal.js/css/theme/white.css">
+	<link rel="stylesheet" href="node_modules/reveal.js/lib/css/zenburn.css">
+	<link rel="stylesheet" href="styles/tailwind.css">
+	<link rel="stylesheet" href="styles/styles.css">
+	<style>
+		.reveal img,
+		.reveal video,
+		.reveal iframe {
+			max-height: 80vh;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<section>
+				The future of eCommerce<br>
+				<br>
+				<img src="images/undraw_add_to_cart_vkjp.svg" class="mx-auto border-none box-shadow-none">
+			</section>
+
+			<section>
+				<img src="images/danielruf.jpg" class="w-64 h-64 rounded-full mx-auto border-none box-shadow-none">
+				<br>
+				<div>Daniel Ruf</div><br>
+				<div class="fragment">frontend developer @ UEBERBIT</div>
+				<div class="fragment">open source contributor</div>
+				<div class="fragment">Magento 2 contributor (~1 year)</div>
+				<div class="fragment">co-organizing Frontend Rhein-Neckar</div>
+			</section>
+
+			<section>
+				<a href="https://daniel-ruf.de/">daniel-ruf.de</a><br>
+				<a href="https://github.com/DanielRuf/">github.com/DanielRuf</a><br>
+				<a href="https://twitter.com/DanielRufde/">twitter.com/DanielRufde</a>
+			</section>
+
+			<section>
+				market (Germany)<br>
+				<br>
+				<ul>
+					<li class="fragment">Magento</li>
+					<li class="fragment">OXID</li>
+					<li class="fragment">Shopware</li>
+				</ul>
+			</section>
+
+			<section>
+				problems<br>
+				<br>
+				<ul>
+					<li class="fragment">slow (frontend)</li>
+					<li class="fragment">big monoliths</li>
+					<li class="fragment">outdated technology</li>
+					<li class="fragment">complicated</li>
+				</ul>
+			</section>
+
+			<section>
+				performance of official <a href="https://magento.com/case-studies/">case studies</a><br>
+			</section>
+
+			<section>
+				<a href="https://unipartner.co.uk/">unipartner.co.uk</a><br>
+				<img src="images/perf1.png" class="mx-auto border-none box-shadow-none">
+			</section>
+
+			<section>
+				<a href="https://www.bauhaus.se/">bauhaus.se</a><br>
+				<img src="images/perf2.png" class="mx-auto border-none box-shadow-none">
+			</section>
+
+			<section>
+				<a href="https://shop.seat.de/">shop.seat.de</a><br>
+				<img src="images/perf3.png" class="mx-auto border-none box-shadow-none">
+			</section>
+
+			<section>
+				#1 selling point: <span class="fragment">short time-to-market</span>
+			</section>
+
+			<section>
+				solutions<br>
+				<br>
+				<ul>
+					<li class="fragment">separation of concerns</li>
+					<li class="fragment">API driven / first</li>
+					<li class="fragment">headless</li>
+					<li class="fragment">fast</li>
+					<li class="fragment">modern</li>
+				</ul>
+			</section>
+
+			<section>
+				<img src="images/undraw_site_stats_l57q.svg" class="mx-auto border-none box-shadow-none">
+			</section>
+
+			<section>
+				solutions<br>
+				<br>
+				<ul>
+					<li class="fragment">GraphQL</li>
+					<li class="fragment">React</li>
+					<li class="fragment">Redux</li>
+				</ul>
+			</section>
+
+			<section>
+				<img src="images/undraw_react_y7wq.svg" class="mx-auto border-none box-shadow-none">
+			</section>
+
+			<section>
+				<div class="fragment">The future of eCommerce &hellip;</div>
+			</section>
+
+			<section>
+				<div class="fragment">&hellip; are PWAs</div>
+			</section>
+
+			<section>
+				PWA features<br>
+				<br>
+				<ul>
+					<li class="fragment">progressive</li>
+					<li class="fragment">responsive</li>
+					<li class="fragment">connectivity independent (offline)</li>
+					<li class="fragment">app like</li>
+					<li class="fragment">fresh</li>
+					<li class="fragment">safe</li>
+					<li class="fragment">discoverable</li>
+					<li class="fragment">re-engageable</li>
+					<li class="fragment">installable</li>
+					<li class="fragment">linkable</li>
+				</ul>
+			</section>
+
+			<section>
+				<a href="https://deity.io/">Deity</a><br>
+				<a href="https://www.front-commerce.com/en/home/">Front Commerce</a><br>
+				<a href="https://pwastudio.io/">Magento PWA Studio</a><br>
+				<a href="https://www.reactioncommerce.com/">Reaction Commerce</a><br>
+				<a href="https://getsaleor.com/">Saleor</a>
+			</section>
+
+			<section>
+				<img src="images/deity_architecture.png" class="mx-auto">
+			</section>
+
+			<section>
+				<video class="mx-auto" src="images/magento_pwa_studio.mp4" poster="images/magento_poster.png" preload controls></video>
+			</section>
+
+			<section>
+				<a href="https://magento-research.github.io/pwa-studio/">PWA Studio docs</a><br>
+				<a href="https://magento-research.github.io/pwa-studio/peregrine/">Peregrine (UI components)</a><br>
+				<a href="https://magento-research.github.io/pwa-studio/venia-pwa-concept/">Venia Storefront (Concept)</a><br>
+				<a href="https://magento-research.github.io/pwa-studio/pwa-buildpack/">PWA Buildpack</a>
+			</section>
+
+			<section>
+				magento-instance.dev/graphql<br>
+				*GraphQl/etc/schema.graphqls<br>
+				<a href="https://devdocs.magento.com/guides/v2.3/graphql/">devdocs.magento.com/guides/v2.3/graphql/</a>
+			</section>
+
+			<section>
+				<a href="https://reacticon.org/">Reacticon Conference</a>
+			</section>
+
+			<section>
+				live demo
+			</section>
+
+			<section>
+				<a href="https://www.vuestorefront.io/">Vue Storefront</a>
+			</section>
+
+			<section>
+				<a href="https://www.gatsbyjs.org/packages/gatsby-source-magento/">gatsby-source-magento</a><br>
+				<a href="https://www.gatsbyjs.org/packages/gatsby-source-magento2/">gatsby-source-magento2</a>
+			</section>
+
+			<section>
+				<img src="images/undraw_JavaScript_Frameworks_x21l.svg" class="mx-auto border-none box-shadow-none">
+			</section>
+
+			<section>
+				thanks for your attention!<br>
+				<br>
+				illustrations from <a href="https://undraw.co/">undraw.co</a><br>
+				<br>
+				<a href="https://github.com/DanielRuf/talks/blob/master/03_wpo_unkonf_2018/slides.pdf">WPO talk (unKonf
+					2018)</a><br>
+				<a href="https://github.com/DanielRuf/my-slides/">WPO lightning talks</a>
+			</section>
+		</div>
+	</div>
+	<script src="node_modules/reveal.js/js/reveal.js"></script>
+	<script src="node_modules/reveal.js/lib/js/head.min.js"></script>
+	<script>
+		Reveal.initialize({
+			width: "100%",
+			height: "100%",
+			margin: 0,
+			minScale: 1,
+			maxScale: 1,
+			dependencies: [
+				// Syntax highlight for <code> elements
+				{ src: 'node_modules/reveal.js/plugin/highlight/highlight.js', async: true, callback: function () { hljs.initHighlightingOnLoad(); } },
+			]
+		});
+	</script>
+</body>
+
+</html>
