@@ -1,0 +1,139 @@
+<html>
+	<head>
+		<link rel="stylesheet" href="node_modules/reveal.js/css/reveal.css">
+		<link rel="stylesheet" href="node_modules/reveal.js/css/theme/white.css">
+		<link rel="stylesheet" href="node_modules/reveal.js/lib/css/zenburn.css">
+		<link rel="stylesheet" href="styles/tailwind.css">
+		<link rel="stylesheet" href="styles/styles.css">
+		<style>
+		.reveal img, .reveal video, .reveal iframe {
+			max-height: 80vh;
+		}
+		</style>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					Code Quality (Clean Code)
+					<br/>
+					with SonarSource products
+				</section>
+				<section>
+					<a href="https://www.sonarsource.com/">SonarSource</a> has different solutions
+					<br/>
+					for improving code quality
+				</section>
+				<section>
+					<ul>
+						<li>
+							<a href="https://docs.sonarqube.org/latest/analysis/scan/sonarscanner/">sonar-scanner</a> CLI (the core)
+						</li>
+						<li>
+							<a href="https://www.sonarqube.org/">SonarQube</a> (the analysis platform)
+						</li>
+						<li>
+							<a href="https://www.sonarlint.org/">SonarLint</a> (linting in IDE, requires JDK)
+						</li>
+						<li>
+							<a href="https://sonarcloud.io/">SonarCloud</a> (hosted version of SonarQube)
+						</li>
+					</ul>
+				</section>
+				<section>
+					<a href="https://docs.sonarqube.org/latest/analysis/scan/sonarscanner/">install sonar-scanner</a>
+					<br/>
+					<ul>
+						<li>
+							extract archive anywhere
+						</li>
+						<li>
+							add path to bin directory to your PATH variable
+						</li>
+						<li>
+							sonar-scanner --help
+						</li>
+						<li>
+							(alternatively using <a href="https://www.npmjs.com/package/sonarqube-scanner">sonarqube-scanner</a> (NodeJS))
+						</li>
+					</ul>
+				</section>
+				<section>
+					install SonarQube demo instance
+					<br/>
+					<ul>
+						<li>
+							<a href="https://hub.docker.com/_/sonarqube/">Docker</a> (docker pull sonarqube)
+						</li>
+						<li>
+							or <a href="https://docs.sonarqube.org/latest/setup/get-started-2-minutes/">manually</a>
+						</li>
+					</ul>
+				</section>
+				<section>
+					SonarQube should run on port 9000 by default
+					<br/>
+					(docker run -p 9000:9000 sonarqube)
+				</section>
+				<section>
+					setup a new project
+				</section>
+				<section>
+					start SonarQube
+					<br/>
+					<img src="images/start-sonarqube.png" class="mx-auto border-none box-shadow-none">
+				</section>
+				<section>
+					create config file
+					<br/>
+					<img src="images/sonar-properties.png" class="mx-auto border-none box-shadow-none">
+					<br/>
+					<small>projectKey is required, everything else is optional</small>
+				</section>
+				<section>
+					add .scannerwork directory (project cache) to .gitignore
+				</section>
+				<section>
+					run sonar-scanner in project
+				</section>
+				<section>
+					<a href="images/start-sonar-scanner.png" class="mx-auto inline-block">
+						<img src="images/start-sonar-scanner.png" class="border-none box-shadow-none">
+					</a>
+				</section>
+				<section>
+					check results
+				</section>
+				<section>
+					<img src="images/sonarqube-homepage.png" class="mx-auto border-none box-shadow-none">
+				</section>
+				<section>
+					demo login is admin / admin
+				</section>
+				<section>
+					<img src="images/sonarqube-projects.png" class="mx-auto border-none box-shadow-none">
+				</section>
+				<section>
+					<img src="images/sonarqube-code.png" class="mx-auto border-none box-shadow-none">
+				</section>
+				<section>
+					many default <a href="https://rules.sonarsource.com/">rules</a> and rule sets
+				</section>
+			</div>
+		</div>
+		<script src="node_modules/reveal.js/js/reveal.js"></script>
+		<script>
+			Reveal.initialize({
+				width: "100%",
+				height: "100%",
+				margin: 0,
+				minScale: 1,
+				maxScale: 1,
+				dependencies: [
+					// Syntax highlight for <code> elements
+					{ src: 'node_modules/reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+				]
+			});
+		</script>
+	</body>
+</html>
