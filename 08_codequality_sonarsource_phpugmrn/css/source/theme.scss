@@ -1,0 +1,98 @@
+/**
+ * bitExpert theme for reveal.js
+ *
+ * Copyright (C) 2018 bitExpert AG
+ */
+
+// This file has been copied over from
+// ../../bower_components/reveal.js/css/theme/source/black.scss
+// See ../../bower_components/reveal.js/css/theme/README.md
+// for further explanations on how to create a custom reveal.js theme.
+
+// Default mixins and settings -----------------
+@import "../../bower_components/reveal.js/css/theme/template/mixins";
+@import "../../bower_components/reveal.js/css/theme/template/settings";
+// ---------------------------------------------
+// Include theme-specific fonts
+@import url(../bower_components/reveal.js/lib/font/source-sans-pro/source-sans-pro.css);
+
+// Override theme settings (see ../../bower_components/reveal.js/css/theme/template/settings.scss)
+$backgroundColor: #fff;
+
+$mainColor: #3b4144;
+$headingColor: #3b4144;
+
+$mainFontSize: 36px;
+$mainFont: 'Source Sans Pro', Helvetica, sans-serif;
+$headingFont: 'Source Sans Pro', Helvetica, sans-serif;
+$headingTextShadow: none;
+$headingLetterSpacing: normal;
+$headingTextTransform: normal;
+$headingFontWeight: 600;
+$linkColor: #FF7300;
+$linkColorHover: lighten($linkColor, 15%);
+$selectionBackgroundColor: lighten($linkColor, 25%);
+
+$heading1Size: 2.5em;
+$heading2Size: 1.6em;
+$heading3Size: 1.3em;
+$heading4Size: 1.0em;
+
+.reveal .controls {
+    bottom: 24px;
+}
+
+section.has-light-background {
+    &, h1, h2, h3, h4, h5, h6 {
+        color: #222;
+    }
+}
+
+.reveal section img {
+    border: none !important;
+    box-shadow: none !important;
+
+    &.logo {
+        zoom: 0.75;
+        margin-bottom: 70px;
+    }
+}
+
+.reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5, .reveal h6 {
+    font-weight: normal !important;
+}
+
+.corner-logo {
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+    width: 200px;
+}
+
+ul {
+    list-style-type: square !important;
+}
+
+.reveal pre {
+    padding: 10px;
+}
+
+.navigate-up, .navigate-down {
+    // display: none;
+}
+
+.rounded-full {
+    border-radius: 9999px;
+}
+
+.h-64 {
+    height: 16rem;
+}
+
+.w-64 {
+    width: 16rem;
+}
+
+// Theme template ------------------------------
+@import "../../bower_components/reveal.js/css/theme/template/theme";
+// ---------------------------------------------
