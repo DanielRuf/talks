@@ -1,0 +1,36 @@
+<html>
+	<head>
+		<link rel="stylesheet" href="node_modules/reveal.js/css/reveal.css">
+		<link rel="stylesheet" href="node_modules/reveal.js/css/theme/white.css">
+		<link rel="stylesheet" href="node_modules/reveal.js/lib/css/zenburn.css">
+		<link rel="stylesheet" href="styles/tailwind.css">
+		<link rel="stylesheet" href="styles/styles.css">
+		<style>
+		.reveal img, .reveal video, .reveal iframe {
+			max-height: 80vh;
+		}
+		</style>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+
+			</div>
+		</div>
+		<script src="node_modules/reveal.js/js/reveal.js"></script>
+		<script>
+			Reveal.initialize({
+				width: "100%",
+				height: "100%",
+				margin: 0,
+				minScale: 1,
+				maxScale: 1,
+				dependencies: [
+					// Syntax highlight for <code> elements
+					{ src: 'node_modules/reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+				]
+			});
+		</script>img/
+	</body>
+</html>
